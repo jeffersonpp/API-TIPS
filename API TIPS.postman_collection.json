@@ -1,0 +1,339 @@
+{
+	"info": {
+		"_postman_id": "732ece48-0f03-4673-afc7-2963a1df295e",
+		"name": "API TIPS",
+		"description": "API TIPS for Better Collective",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET TOKEN",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "82005bcd-e68f-4190-960d-c469ecf64dd0",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "5daacbb9-f0c0-44c6-833d-857b5980cf75",
+						"exec": [
+							"let answer = JSON.parse(responseBody);",
+							"pm.globals.set(\"token\", answer._token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/api/token",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"token"
+					]
+				},
+				"description": "Get the token from this session"
+			},
+			"response": []
+		},
+		{
+			"name": "LIST ALL TIPS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/api/tip",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"tip"
+					]
+				},
+				"description": "Get a list of tips in JSON format"
+			},
+			"response": []
+		},
+		{
+			"name": "REGISTER TEST USER",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/register?name=Jefferson Lopes de Sousa&email=other@gmail.com&password=JLSesertf&password_confirmation=JLSesertf&_token={{token}}&token={{token}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"register"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Jefferson Lopes de Sousa"
+						},
+						{
+							"key": "email",
+							"value": "other@gmail.com"
+						},
+						{
+							"key": "password",
+							"value": "JLSesertf"
+						},
+						{
+							"key": "password_confirmation",
+							"value": "JLSesertf"
+						},
+						{
+							"key": "_token",
+							"value": "{{token}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				},
+				"description": "Register the user when no one is logged "
+			},
+			"response": []
+		},
+		{
+			"name": "LOGOUT",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/logout",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"logout"
+					]
+				},
+				"description": "Logout from the API"
+			},
+			"response": []
+		},
+		{
+			"name": "GET TOKEN",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "82005bcd-e68f-4190-960d-c469ecf64dd0",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "5daacbb9-f0c0-44c6-833d-857b5980cf75",
+						"exec": [
+							"let answer = JSON.parse(responseBody);",
+							"pm.globals.set(\"token\", answer._token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/api/token",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"token"
+					]
+				},
+				"description": "Get token again. Because we logout."
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN ",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/login?email=other@gmail.com&password=JLSesertf&_token={{token}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"login"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "other@gmail.com"
+						},
+						{
+							"key": "password",
+							"value": "JLSesertf"
+						},
+						{
+							"key": "_token",
+							"value": "{{token}}"
+						}
+					]
+				},
+				"description": "Login the newly created user."
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE NEW TIP",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/api/tip?_token={{token}}& title=POSTMAN SECOND TIP TITLE&description=POSTMAN SECOND TIP DESCRIPTION",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"tip"
+					],
+					"query": [
+						{
+							"key": "_token",
+							"value": "{{token}}"
+						},
+						{
+							"key": " title",
+							"value": "POSTMAN SECOND TIP TITLE"
+						},
+						{
+							"key": "description",
+							"value": "POSTMAN SECOND TIP DESCRIPTION"
+						}
+					]
+				},
+				"description": "Create new tip"
+			},
+			"response": []
+		},
+		{
+			"name": "LIST ALL TIPS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/api/tip",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"tip"
+					]
+				},
+				"description": "Get a list of tips in JSON format"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "0237d55c-05e0-44a7-a274-52749d2446e8",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "6c9a4754-24cd-45ff-a8b2-e290d2e08a4c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "d4307782-f0b0-424e-b62a-63a438e1848b",
+			"key": "url",
+			"value": "localhost:8000",
+			"type": "string"
+		},
+		{
+			"id": "b26c939d-2224-4561-b4d2-dea71f8c93f9",
+			"key": "token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
