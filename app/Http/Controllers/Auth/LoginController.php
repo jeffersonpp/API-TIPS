@@ -18,21 +18,20 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-
     use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
+    | Where to redirect users after login.
+    |
+    | @var string
+    */
     protected $redirectTo = '/api/tip';
 
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+    | Create a new controller instance.
+    |
+    | @return void
+    */
     public function __construct()
     {
         $this->middleware('guest')->except('logout');

@@ -31,7 +31,7 @@ class Tip extends Eloquent
 	protected $dates = ['deleted_at'];
 	
 	/**
-     * The attributes that are mass assignable.
+     * Mass assignable attributes.
      *
      * @var array
      */

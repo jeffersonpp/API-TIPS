@@ -26,19 +26,7 @@ class TipController extends Controller
     public function index()
     {
         $tips=Tip::all();
-		
 		return json_encode($tips);
-    }
-	
-	/**
-	|--------------------------------------------------
-	| Create a Tip - It has a view 
-	|--------------------------------------------------	
-	| METHOD: GET
-	*/
-    public function create()
-	{
-        return view('tipcreate');
     }
 	
 	/**
@@ -55,25 +43,11 @@ class TipController extends Controller
         $tip->title = $request->get('title');
         $tip->description = $request->get('description');
         $tip->save();
-
-        return redirect('api/tip');
+		$answer=array('message'=>"Tip stored sucessfully!");
+        return json_encode($answer);
     }
 	
-	/**
-	|--------------------------------------------------
-	| Edit a Tip - It has a view 
-	|--------------------------------------------------	
-	| METHOD: GET
-	*/
-
-    public function edit($id)
-    {
-        $tip = Tip::find($id);
- 
-		return view('tipedit',compact('tip','id'));
-    }
-	
-	/**
+	/*
 	|--------------------------------------------------
 	| Store the edited Tip 
 	|--------------------------------------------------	
@@ -85,11 +59,11 @@ class TipController extends Controller
         $tip->title = $request->get('tiptitle');
         $tip->description = $request->get('tipdescription');
         $tip->save();
-
-        return redirect('api/tip');
+		$answer=array('message'=>"Update Tip sucessfully!");
+        return json_encode($answer);
 	}
 	
-	/**
+	/*
 	|--------------------------------------------------
 	| Show - JSON format
 	|--------------------------------------------------	
@@ -101,11 +75,10 @@ class TipController extends Controller
     public function show($id)
     {
         $tip = Tip::find($id);
-		
         return json_encode($tip);
     }
 
-	/**
+	/*
 	|--------------------------------------------------
 	| SoftDelete a Tip
 	|--------------------------------------------------	
@@ -114,9 +87,8 @@ class TipController extends Controller
     public function destroy($id)
     {
         $tip = Tip::find($id);
-        $tip->delete();
-		
-        return redirect('api/tip');
+        $tip->delete();	
+		$answer=array('message'=>"Tip deletet sucessfully!");
+        return json_encode($answer);
     }
-
 }

@@ -6,14 +6,10 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Jenssegers\Mongodb\Auth\User as Authenticatable;
 
-//use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
-//use Jenssegers\Mongodb\Eloquent\HybridRelations;
-//use Illuminate\Foundation\Auth\User as Authenticatable
 
 class User extends Authenticatable
 {
     use Notifiable;
-//    use HybridRelations;
 
 	/**
      * The connection name.

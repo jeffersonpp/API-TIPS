@@ -17,7 +17,8 @@ class HomeController extends Controller
 	public function logout()
     {
 		Auth::logout();
-        return redirect('api/tip/');
+		$answer=array('message'=>"Tip stored sucessfully!");
+        return json_encode($answer);
     }
 	
 	/**
