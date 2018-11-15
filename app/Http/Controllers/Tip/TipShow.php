@@ -23,6 +23,9 @@ class TipShow extends TipController
     public function show($id)
     {
         $tip = Tip::find($id);
+		if($tip ==null){
+			return json_encode(array('message'=>'Value not found!'));
+		}
         return json_encode($tip);
     }
 }

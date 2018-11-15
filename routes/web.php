@@ -20,8 +20,8 @@ Route::get('/', function () {
 //Route::resource('tip','TipController');
 Route::get('tip','TipController@index');
 Route::post('tip/store','Tip\TipStore@store');
-Route::post('tip/update','Tip\TipUpdate@update');
-Route::get('tip/show/{id}','Tip\TipShow@show');
+Route::post('tip/{id}','Tip\TipUpdate@update');
+Route::get('tip/{id}','Tip\TipShow@show');
 Route::get('tip/delete/{id}','Tip\TipDelete@destroy');
 
     /*
@@ -32,9 +32,8 @@ Route::get('tip/delete/{id}','Tip\TipDelete@destroy');
     | The routes are now defined by the Tip Controller
     | as described below:
 	|
-    | GET 		api/tip = 		INDEX
-    | GET 		api/tip/create= CREATE
-	| POST		api/tip/ = 		STORE
+    | GET 		api/tip = 		INDEX - Show All
+	| POST		api/tip/store =	STORE
 	| GET 		api/tip/{ID} = 	SHOW
 	| POST		api/tip/{ID} = 	UPDATE
 	| DELETE 	api/tip/{ID} = 	DELETE
@@ -47,8 +46,7 @@ Route::get('tip/delete/{id}','Tip\TipDelete@destroy');
 Route::get('/', function () {
     return redirect('api');
 });
-//Auth::routes(['except'=>'token']);
-Auth::routes(['except'=>['login','logout','register']]);
 
-Route::get('api/token', 'HomeController@token');
-Route::get('logout', 'HomeController@logout');
+Auth::routes(['except'=>['login','logout','register']]);
+Route::get('api/token', 'TokenController@token');
+Route::get('logout', 'LogoutController@logout');

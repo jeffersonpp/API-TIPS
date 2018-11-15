@@ -17,6 +17,7 @@ class TipStore extends TipController
 	*/
     public function store(Request $request)
     {
+	try{
         $tip = new Tip;
 		$guid = new GUID;
 		$tip->guid = $guid->create();
@@ -25,6 +26,11 @@ class TipStore extends TipController
         $tip->save();
 		$answer=array('message'=>"Tip stored sucessfully!");
         return json_encode($answer);
+		}
+	catch(Exception $e) {
+		$answer = array('status' => 'error','message' => $e->getMessage());
+		return json_encode($answer); 
+	}
     }
 }
 
