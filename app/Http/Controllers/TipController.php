@@ -59,7 +59,7 @@ class TipController extends Controller
         $tip->title = $request->get('tiptitle');
         $tip->description = $request->get('tipdescription');
         $tip->save();
-		$answer=array('message'=>"Update Tip sucessfully!");
+		$answer=array('message'=>"Tip Updated sucessfully!");
         return json_encode($answer);
 	}
 	

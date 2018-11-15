@@ -17,7 +17,12 @@ Route::get('/', function () {
     return response()->json(['message' => 'Tips API', 'status' => 'Connected']);;
 });
 
-Route::resource('tip','TipController');
+//Route::resource('tip','TipController');
+Route::get('tip','TipController@index');
+Route::post('tip/store','Tip\TipStore@store');
+Route::post('tip/update','Tip\TipUpdate@update');
+Route::get('tip/show/{id}','Tip\TipShow@show');
+Route::get('tip/delete/{id}','Tip\TipDelete@destroy');
 
     /*
     |--------------------------------------------------------------------------
